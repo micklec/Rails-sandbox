@@ -8,7 +8,7 @@ group :development, :test do
   gem 'rspec-rails', '2.8.1'
   gem 'guard'
   gem 'guard-rspec', '0.5.5'
-    gem 'growl'
+  gem 'growl'
 end
 
 # Gems used only for assets and not required
