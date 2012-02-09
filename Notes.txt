@@ -1,0 +1,4 @@
+Notes / problems
+
+- Alt text not appearing when no image file present
+- Growl not working when running rspec
