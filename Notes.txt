@@ -3,19 +3,19 @@ Notes / problems
 - Alt text not appearing when no image file present 
 	** Solved - this is a chrome thing
 - Growl sometimes not working with rspec, guard, spork
+	** Solved - checked all gems correct. Checked Growl manually in irb. 
 - mate not working outside home directory
+	** Not solved - switched to Sublime Text 2!!
 
-Lookup
+NEED TO DO / NOTES
+- See section 7.4.4 for heroku deployment (incl SSL)
 
-- image_tag  - part of what??
-- render method - which class does this belong to (must be in Rails)
-
-
-Notes
-
+- Lookup image_tag  - part of what??
+- Lookup render method - which class does this belong to (must be in Rails)
+- Lookup content_tag method - used in application.html.erb
 - Writeup notes from ORM instatiation (errors)
 
-
+RAILS
 rails server --environment production
 
 
