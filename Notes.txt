@@ -1,4 +1,53 @@
 Notes / problems
 
-- Alt text not appearing when no image file present
-- Growl not working when running rspec
+- Alt text not appearing when no image file present 
+	** Solved - this is a chrome thing
+- Growl sometimes not working with rspec, guard, spork
+- mate not working outside home directory
+
+Lookup
+
+- image_tag  - part of what??
+- render method - which class does this belong to (must be in Rails)
+
+
+Notes
+
+- Writeup notes from ORM instatiation (errors)
+
+
+rails server --environment production
+
+
+GIT
+git checkout -b <branch>
+
+RAKE
+rake db:migrate 						will do default (dev)
+rake db:migrate RAILS_ENV=production	specify env
+rake db:reset
+
+
+HEROKU
+heroku run console
+
+
+SUBLIME TEXT
+find position cmd-R
+
+
+RAILS ActiveRecord
+user.new (etc...)
+user.save
+user.errors.full_messages -	displays full messages from ActiveRecord
+
+
+RVM
+create .rvmrc file in project root to specify which versiona nd gemset to use - like this - rvm ruby-1.9.2@<gemsetname>. This auto changes the 
+ruby version and gemset in use
+or use (in project root): 
+rvm --rvmrc --create version@gemsetname
+then change out and in folder, let rvm do its thing
+
+ruby - v 			shows version of ruby in use
+gem gemdir 			shows gem directories in use
