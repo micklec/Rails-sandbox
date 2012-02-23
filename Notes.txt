@@ -1,4 +1,4 @@
-Notes / problems
+PROBLEMS
 
 - Alt text not appearing when no image file present 
 	** Solved - this is a chrome thing
@@ -8,16 +8,43 @@ Notes / problems
 	** Not solved - switched to Sublime Text 2!!
 
 NEED TO DO / NOTES
-- See section 7.4.4 for heroku deployment (incl SSL)
 
-- Lookup image_tag  - part of what??
-- Lookup render method - which class does this belong to (must be in Rails)
+- See section 7.4.4 for heroku deployment (incl SSL)
+- Look at Markdown syntax
+- Lookup image_tag  - part of what?
+	** part of ActionView::Helpers::AssetTagHelper
+- Lookup render method - which class does this belong to
 - Lookup content_tag method - used in application.html.erb
-- Writeup notes from ORM instatiation (errors)
+	** part of ActionView::Helpers::TagHelper
+- Have a look at the paperclip gem, for image uploads and custom image handling (chapter 7 footnotes 8)
+- Install and use PostgreSQL? Does it have a good db browser??
+- check out the header info in gitignore
+- look up SecureRandom
+- look up cookies
+- lookup before_save callback
+- http://api.rubyonrails.org/v3.2.0/classes/ActiveRecord/Callbacks.html
+- http://en.wikipedia.org/wiki/Callback_(computer_science)
+- read about Rails API save - noting the validate: false option... http://api.rubyonrails.org/v3.2.0/classes/ActiveRecord/Persistence.html#method-i-save
+
+
+UNIX
+tail -f log/development.log
 
 RAILS
 rails server --environment production
+rails console --sandbox
 
+rails generate model User name:string email:string 	
+rails generate migration add_index_to_<table>_<field>
+rails generate migration add_<field>_to_<table> <field>:string
+
+ANNOTATE gem annotates models
+annotate --position before
+
+RAILS ActiveRecord
+user.new (etc...)
+user.save
+user.errors.full_messages -	displays full messages from ActiveRecord
 
 GIT
 git checkout -b <branch>
@@ -26,21 +53,13 @@ RAKE
 rake db:migrate 						will do default (dev)
 rake db:migrate RAILS_ENV=production	specify env
 rake db:reset
-
+rake db:test:prepare
 
 HEROKU
 heroku run console
 
-
 SUBLIME TEXT
 find position cmd-R
-
-
-RAILS ActiveRecord
-user.new (etc...)
-user.save
-user.errors.full_messages -	displays full messages from ActiveRecord
-
 
 RVM
 create .rvmrc file in project root to specify which versiona nd gemset to use - like this - rvm ruby-1.9.2@<gemsetname>. This auto changes the 

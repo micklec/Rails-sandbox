@@ -35,8 +35,9 @@ describe "User pages" do
       describe "after saving the user" do
         before { click_button "Sign up"}
         let(:user) { User.find_by_email('user@example.com') }
-        it {should have_selector('title', text: user.name) }
-        it {should have_selector('div.flash.success', text: 'Thanks') }
+        it { should have_selector('title', text: user.name) }
+        it { should have_selector('div.flash.success', text: 'Thanks') }
+        it { should have_link('Sign out') }
       end
     end
 

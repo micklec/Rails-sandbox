@@ -1,0 +1,14 @@
+# Alternate CSS classes for even and odd numbers...
+<table>
+<% @items.each do |item| %>
+  <tr class="<%= cycle("even", "odd") -%>">
+      <% item.each do |value| %>
+        <span style="color:<%= cycle("#333", "#666", "#999", :name => "colors") -%>">
+          <%= value %>
+        </span>
+      <% end %>
+
+      <% reset_cycle("colors") %>
+  </tr>
+<% end %>
+</table>
