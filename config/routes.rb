@@ -15,7 +15,6 @@ SampleApp::Application.routes.draw do
   match '/sandbox' => 'static_pages#sandbox'
 
   
-  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

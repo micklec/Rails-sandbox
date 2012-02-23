@@ -1,6 +1,7 @@
 <% provide(:title, 'Home') %>
 <h1>Home</h1>
-<p>This is the home page for the <a href="http://railstutorial.org/">sample application</a>.
-</p>
-
-<%= link_to "Sign up", signup_path, class: "signup_button round" %>
+<p>This is the home page</p>
+<% if !signed_in? %>
+	<%= link_to "Create account", signup_path, class: "signup_button round" %>
+<% end %>
+<%= link_to "Sandbox page", sandbox_path %>
