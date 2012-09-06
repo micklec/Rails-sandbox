@@ -44,8 +44,9 @@ describe "User pages" do
     describe "error messages" do
       before { click_button "Sign up" }
       let (:error_text) { 'errors prevented this user from being saved' }
-      it { should have_selector('title', text: 'Sign up')}
+      it { should have_selector('title', tet: 'Sign up')}
       it { should have_content(error_text) }
+
     end
   end
   
@@ -57,5 +58,51 @@ describe "User pages" do
     it { should have_selector('title',  text: user.name) }
   end
 
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      sign_in user
+      visit edit_user_path(user)
+    end
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Edit user") }
+      it { should have_selector('title', text: "Edit user") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
+
+    describe "with invalid information" do
+      let(:error) { '1 error prohibited this user from being saved' }
+      before { click_button "Update" }
+
+      it { should have_content(:error) }
+    end
+    
+    describe "with valid information" do
+      let(:user)      { FactoryGirl.create(:user) }
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+      
+      before do
+        fill_in "Name",         with: new_name
+        fill_in "Email",        with: new_email
+        fill_in "Password",     with: user.password
+        fill_in "Confirmation", with: user.password
+        click_button "Update"
+      end
+
+      it { should have_selector('title', text: new_name) }
+      it { should have_selector('div.flash.success') }
+      it { should have_link('Sign out', :href => signout_path) }
+      specify { user.reload.name.should  == new_name }  # => See below
+      specify { user.reload.email.should == new_email }
+    end
+
+  end
 
 end
+
+
+# => RELOAD: This code reloads the user variable from the test database 
+# => using user.reload, and then verifies that the user’s new name 
+# => and email match the new values.

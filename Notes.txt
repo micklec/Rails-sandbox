@@ -5,26 +5,29 @@ PROBLEMS
 - Growl sometimes not working with rspec, guard, spork
 	** Solved - checked all gems correct. Checked Growl manually in irb. 
 - mate not working outside home directory
-	** Not solved - switched to Sublime Text 2!!
+	** Not solved - switched to Sublime Text 2
 
 NEED TO DO / NOTES
 
-- See section 7.4.4 for heroku deployment (incl SSL)
-- Look at Markdown syntax
-- Lookup image_tag  - part of what?
-	** part of ActionView::Helpers::AssetTagHelper
-- Lookup render method - which class does this belong to
-- Lookup content_tag method - used in application.html.erb
-	** part of ActionView::Helpers::TagHelper
-- Have a look at the paperclip gem, for image uploads and custom image handling (chapter 7 footnotes 8)
-- Install and use PostgreSQL? Does it have a good db browser??
-- check out the header info in gitignore
-- look up SecureRandom
+- See section 7.4.4 for heroku deployment (incl SSL).. then section 8?
+- look up SecureRandom - can't find this?
+- Look up flash. (the arg seems to be a css styl tag? )
 - look up cookies
 - lookup before_save callback
+- check out the header info in gitignore
 - http://api.rubyonrails.org/v3.2.0/classes/ActiveRecord/Callbacks.html
 - http://en.wikipedia.org/wiki/Callback_(computer_science)
 - read about Rails API save - noting the validate: false option... http://api.rubyonrails.org/v3.2.0/classes/ActiveRecord/Persistence.html#method-i-save
+- Have a look at the paperclip gem, for image uploads and custom image handling (chapter 7 footnotes 8)
+- Install and use PostgreSQL? Does it have a good db browser??
+- Look at Markdown syntax
+- Read more about Capybara, Guard, Spork, RSpec
+- Lookup image_tag  - part of what?
+	** part of ActionView::Helpers::AssetTagHelper
+- Lookup render method - which class does this belong to
+	** It's complicated! entry point in Actionview::Renderer.render, then used by AV and AC
+- Lookup content_tag method - used in application.html.erb
+	** part of ActionView::Helpers::TagHelper
 
 
 UNIX
@@ -33,6 +36,8 @@ tail -f log/development.log
 RAILS
 rails server --environment production
 rails console --sandbox
+rails console test
+
 
 rails generate model User name:string email:string 	
 rails generate migration add_index_to_<table>_<field>
@@ -70,3 +75,19 @@ then change out and in folder, let rvm do its thing
 
 ruby - v 			shows version of ruby in use
 gem gemdir 			shows gem directories in use
+
+RESTful routes for resources
+-----------------------------
+HTTP rq	URI       	Action  Named route   		 Purpose
+GET   /users    	index   users_pathpage 		 to list all users
+GET   /users/1 		show 	user_path(user) 	 page show user with id 1
+GET   /users/new 	new 	new_user_path 		 page make a new (signup)
+POST  /users 		create 	users_path 			 create a new user
+GET   /users/1/edit edit 	edit_user_path(user) page to edit with id 1
+PUT   /users/1 		update 	user_path(1) 		 update user with id 1
+DELETE/users/1 		destroy	user_path(user)		 delete user with id 1
+
+
+
+
+

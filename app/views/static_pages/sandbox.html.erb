@@ -1,4 +1,5 @@
-# Alternate CSS classes for even and odd numbers...
+<% provide(:title, 'Sandbox') %>
+<p>Alternate CSS classes for even and odd numbers...</p>
 <table>
 <% @items.each do |item| %>
   <tr class="<%= cycle("even", "odd") -%>">
