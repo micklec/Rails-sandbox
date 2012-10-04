@@ -2,14 +2,16 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
- 	  <%= render 'layouts/stylesheets' %> <!-- partial _stylesheets -->
-    <%= javascript_include_tag 	"application" %>
+ 	  <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+
     <div class="container">
-      <%= render 'layouts/header' %>
       
       <section class="round">
         <% flash.each do |key, value| %>
@@ -17,12 +19,16 @@
           <!--  above line is a better alternative to -
                 <div class="flash <%= key %>"><%= value %></div> -->
         <% end %>
-        <%= yield %>
       </section>
-      
+
+      <%= yield %>
       <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-      <%= @current_user.name if signed_in? %>
+    
     </div>
+    
+   
+    <%= debug(params) if Rails.env.development? %>
+    <%= @current_user.name if signed_in? %>
+  
   </body>
 </html> 
