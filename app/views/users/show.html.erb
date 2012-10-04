@@ -1,13 +1,11 @@
 <%= provide(:title, @user.name) %>
-<table class="profile">
-	<tr>
-		<td class="main">
+<div class="row">
+	<aside class="span4">
+		<section>
 			<h1><%= gravatar_for @user, size: 40 %>
 				<%= @user.name %><h1>
-		<td>
-		<td class="sidebar round">
-			<strong>Name</strong>	<%= @user.name %><br />
-			<strong>Profile</strong>	<%= link_to user_path(@user), @user %>
-		</td>
-	</tr>
-</table>
+		</section>
+		<strong>Name</strong>	<%= @user.name %><br />
+		<strong>Profile</strong>	<%= link_to user_path(@user), @user %>
+	</aside>
+</div>

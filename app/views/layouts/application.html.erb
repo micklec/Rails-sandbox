@@ -13,22 +13,18 @@
 
     <div class="container">
       
-      <section class="round">
-        <% flash.each do |key, value| %>
-          <%= content_tag(:div, value, class: "flash #{key}") %>
-          <!--  above line is a better alternative to -
-                <div class="flash <%= key %>"><%= value %></div> -->
-        <% end %>
-      </section>
-
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    
       <%= yield %>
+      
       <%= render 'layouts/footer' %>
+
+      <%= debug(params) if Rails.env.development? %>
     
-    </div>
-    
-   
-    <%= debug(params) if Rails.env.development? %>
+     
+    </div> 
     <%= @current_user.name if signed_in? %>
-  
   </body>
 </html> 
