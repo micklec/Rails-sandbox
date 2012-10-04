@@ -7,7 +7,7 @@ gem 'bcrypt-ruby', '3.0.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
-  gem 'annotate', '~> 2.4.1.beta'
+  gem 'annotate', '2.5.0', group: :development
   gem 'growl'
   gem 'rspec-rails', '2.11.0'
   gem 'capybara', '1.1.2'
