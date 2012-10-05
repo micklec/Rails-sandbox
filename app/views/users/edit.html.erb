@@ -1,35 +1,33 @@
 <%= provide(:title, 'Edit user') %>
-<h1>Edit user</h1>
-<%= form_for(@user) do |f| %>
-<!--  When constructing a form using form_for(@user), 
-      Rails will use POST if @user.new_record? is true and
-      PUT if it is false. -->
-  <%= render 'shared/error_messages' %>  
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+<h1>Update your profile</h1>
 
-<div>
-  <%= gravatar_for(@user) %>
-  <a href="http://gravatar.com/emails">change</a>
+<div class="row">
+  <div class="span6 offset3">
+
+    <%= form_for(@user) do |f| %>
+    <!--  When constructing a form using form_for(@user), 
+          Rails will use POST if @user.new_record? is true and
+          PUT if it is false. -->
+      <%= render 'shared/error_messages' %>  
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+
+    <% end %>
+    <%= gravatar_for(@user) %>
+    <a href="http://gravatar.com/emails">change</a>
+  </div>
 </div>
-
 
 <!-- shared partials should reside in /views/shared by convention -->

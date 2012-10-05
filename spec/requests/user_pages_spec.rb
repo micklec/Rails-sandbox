@@ -9,14 +9,13 @@ describe "User pages" do
     before { visit signup_path }
     
     it { should have_selector('h1',     text: 'Sign up') }
-    it { should have_selector('title',  text: full_title('Sign up')) }
     
     describe "with invalid information" do
       it "should not create a user" do
-        expect { click_button "Sign up" }.not_to change(User, :count)
+        expect { click_button "Create my account" }.not_to change(User, :count)
         # this is the same as -
         # initial = User.count
-        # click_button "Sign up"
+        # click_button "Create my account"
         # final = User.count
         # initial.should == final
       end
@@ -30,23 +29,22 @@ describe "User pages" do
         fill_in "Confirmation", with: "foobar"
       end
       it "should create a user" do
-        expect { click_button "Sign up" }.to change(User, :count).by(1)
+        expect { click_button "Create my account" }.to change(User, :count).by(1)
       end
       describe "after saving the user" do
-        before { click_button "Sign up"}
+        before { click_button "Create my account"}
         let(:user) { User.find_by_email('user@example.com') }
-        it { should have_selector('title', text: user.name) }
-        it { should have_selector('div.flash.success', text: 'Thanks') }
+        it { should have_selector('section', text: user.name) }
+        it { should have_selector('div', text: 'Thanks for signing up!') }
         it { should have_link('Sign out') }
       end
     end
 
     describe "error messages" do
-      before { click_button "Sign up" }
-      let (:error_text) { 'errors prevented this user from being saved' }
-      it { should have_selector('title', tet: 'Sign up')}
+      before { click_button "Create my account" }
+      let (:error_text) { 'This form contains' }
+      it { should have_selector('title', tet: 'Create my account')}
       it { should have_content(error_text) }
-
     end
   end
   
@@ -66,14 +64,14 @@ describe "User pages" do
     end
 
     describe "page" do
-      it { should have_selector('h1',    text: "Edit user") }
+      it { should have_selector('h1',    text: "Update your profile") }
       it { should have_selector('title', text: "Edit user") }
       it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do
-      let(:error) { '1 error prohibited this user from being saved' }
-      before { click_button "Update" }
+      let(:error) { 'This form contains 1 error' }
+      before { click_button "Save changes" }
 
       it { should have_content(:error) }
     end
@@ -88,12 +86,12 @@ describe "User pages" do
         fill_in "Email",        with: new_email
         fill_in "Password",     with: user.password
         fill_in "Confirmation", with: user.password
-        click_button "Update"
+        click_button "Save changes"
       end
 
       it { should have_selector('title', text: new_name) }
-      it { should have_selector('div.flash.success') }
-      it { should have_link('Sign out', :href => signout_path) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Sign out', href: signout_path) }
       specify { user.reload.name.should  == new_name }  # => See below
       specify { user.reload.email.should == new_email }
     end

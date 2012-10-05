@@ -16,7 +16,7 @@ describe "Authentication" do
     	before { click_button "Sign in" }
 
     	it { should have_selector('title', 		text: "Sign in") }
-    	it { should have_selector('div.flash.error', text: "Invalid") }
+    	it { should have_selector('div', text: "Invalid email/password combination") }
     end
 
     describe "with valid information" do
@@ -59,6 +59,12 @@ describe "Authentication" do
           before { put user_path(user) }
           specify { response.should redirect_to(signin_path) }
         end
+
+        describe "visiting the user index" do
+          before { visit users_path }
+          specify { should have_selector('title', text: 'Sign in') }
+        end
+
       end
 
       describe "when attempting to visit a protected page" do
