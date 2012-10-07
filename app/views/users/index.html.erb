@@ -1,11 +1,20 @@
 <%= provide(:title, 'All users') %>
 <h1>All users</h1>
 
+<%= will_paginate %>
+
 <ul class="users">
   <% @users.each do |user| %>
-  <li>
-    <%= gravatar_for user, size: 52 %>
-    <%= link_to user.name, user %>
-  </li>
+  	<%# this calls the _user partial - %>
+  	<%= render user %>
+
+  	<%# this would use the users 'collection'. Rails knows and 
+  	automatically iterates through- however WillPaginate::per_page
+  	set in the controller, seems to be ignored with this %>
+  	<%# <%= render @users %>
+
   <% end %>
 </ul>
+
+
+<%= will_paginate %>

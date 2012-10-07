@@ -43,7 +43,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    WillPaginate::per_page = 5
+    @users = User.paginate(page: params[:page])
   end
 
   private
